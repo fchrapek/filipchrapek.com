@@ -1,0 +1,14 @@
+@import "mixins";
+
+.portfolio {
+  @include up(lg) {
+    display: flex;
+  }
+}
+
+.bio,
+.projects {
+  @include up(lg) {
+    width: 50dvw;
+  }
+}

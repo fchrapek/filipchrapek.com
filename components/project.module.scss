@@ -1,0 +1,9 @@
+@import "../app/mixins";
+
+.project {
+  border: 2px solid red;
+
+  @include up(lg) {
+    min-height: 100dvh;
+  }
+}
