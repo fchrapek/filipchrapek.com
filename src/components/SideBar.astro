@@ -16,51 +16,39 @@ const last_posts = posts.slice(0, 3);
 <div class="drawer-side z-40">
   <label for="my-drawer" class="drawer-overlay"></label>
   <aside
-    class="px-2 pt-2 h-auto min-h-full bg-base-200 lg:w-[40dvw] text-base-content flex flex-col"
+    class="p-5 lg:px-20 xl:px-[8.6rem] h-auto min-h-full bg-base-200 lg:w-[40dvw] text-base-content flex flex-col"
   >
-    <a class="block w-fit mx-auto mt-5 mb-6" href="/">
+    <h1 class="mb-10">
+      <span class="block text-xl py-1">👋 I'm Filip and I really like to</span>
+      <span class="block text-3xl font-bold"
+        >Create, solve problems, make pretty things along the way
+      </span>
+    </h1>
+
+    <a class="block mb-10" href="/">
       <Image
+        class="w-full"
         aspectRatio="3:4"
         format="webp"
-        width={300}
+        width={320}
         height={400}
         src="/profile.jpg"
         alt="Profile image"
       />
     </a>
 
-    <div class="pb-12 mt-5">
-      <h1>
-        <span class="block text-xl py-1">👋 I'm Filip and I really like to</span
-        >
-        <span class="block text-5xl font-bold"
-          >Create, solve problems, make pretty things along the way
-        </span>
-      </h1>
-      <div class="mt-8">
-        <a
-          class="btn"
-          href="https://twitter.com/manuelernestog"
-          target="_blank"
-        >
-          Let's connect!</a
-        >
-      </div>
-    </div>
-    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+    <!-- <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} /> -->
 
     {
       last_posts.map((post) => (
         <>
           <HorizontalCard
             title={post.data.title}
-            img={post.data.heroImage}
             desc={post.data.description}
             url={"/blog/" + post.slug}
             target="_self"
             badge={post.data.badge}
           />
-          <div class="divider my-0" />
         </>
       ))
     }

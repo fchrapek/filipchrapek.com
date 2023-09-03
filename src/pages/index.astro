@@ -4,10 +4,6 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("portfolio");
-
-console.log(projects.data);
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  Strona jest w trakcie mocnych testów, zlituj się proszę!
-</BaseLayout>
+<BaseLayout sideBarActiveItemID="home">Check out some of my work 👇</BaseLayout>
