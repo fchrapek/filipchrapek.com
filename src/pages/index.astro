@@ -6,4 +6,7 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("portfolio");
 ---
 
-<BaseLayout sideBarActiveItemID="home">Check out some of my work 👇</BaseLayout>
+<BaseLayout sideBarActiveItemID="home">
+  <p>Check out some of my work 👇</p>
+  <p class="text-center text-gray-300">[work in progress]</p>
+</BaseLayout>
