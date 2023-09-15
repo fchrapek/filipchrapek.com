@@ -1,6 +1,7 @@
 # build output
 dist/
-.cache
+.output/
+
 # dependencies
 node_modules/
 
@@ -10,6 +11,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+
 # environment variables
 .env
 .env.production
@@ -17,7 +19,17 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# Astro
-.astro/
+# ignore .astro directory
+.astro
 
-.*
+# ignore Jampack cache files
+.jampack/
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
