@@ -16,7 +16,7 @@ Not that I'm bragging, but I can confidently say that I'm in world top 10 when i
 
 As much as it's nice to brag about this in front of my family, friends, or potential employers (also being a member of the procrastination club often earns me cool things like discounts in McDonald's), sometimes it would be nice to check off at least one task from the never-ending to-do list.
 
-But what do you do if Jocko Willink isn't sitting next to you, shouting Full Metal Jacket style, that discipline is the key to freedom? Well, I don't know, maybe try creating an account on **<a href="https://freedom.to/" target="_blank">Freedom</a>**?
+But what do you do if Jocko Willink isn't sitting next to you, shouting Full Metal Jacket style, that discipline is the key to freedom? Well, I don't know, maybe try creating an account on **<a href="https://freedom.sjv.io/Wq9dYn" target="_blank">Freedom</a>**?
 
 ## Table of Contents
 
@@ -46,3 +46,8 @@ Now my workflow looks like this: I have 3 Blacklists prepared (depending on whet
 ## Pay them, it's worth it
 
 Oh, by the way, Freedom is paid, but it offers a 7-day trial. The yearly, premium version (after all the initial discounts) costs around $30, which I think is very reasonable (if you are like me from the past and you have some trouble using paid solutions I recommend trying to overcome it and occasionally trying taking out your wallet, because the difference in quality can be huuuuuge 🙂).
+
+## Links
+
+- Sign up: <a href="https://freedom.sjv.io/Wq9dYn" target="_blank">Freedom</a> (affiliate link)
+- Check the <a href="https://freedom.to/upgrade" target="_blank">Pricing and QA</a>
