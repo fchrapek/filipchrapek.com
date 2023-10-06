@@ -1,4 +1,4 @@
-# Personal blog (in Polish)
+# Personal blog (in English)
 
 Everything that is currently interesting to me, which probably usually would be technology, design, freelancing and productivity.
 
