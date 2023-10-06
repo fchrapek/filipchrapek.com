@@ -4,27 +4,32 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
+import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+import { strings } from "./src/content/content.js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://filipchrapek.com/", // replace this with your deployed domain
+  site: "https://filipchrapek.com/",
+  // replace this with your deployed domain
   integrations: [
     tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
+      applyBaseStyles: false,
     }),
     react(),
     sitemap(),
+    mdx({
+      extendMarkdownConfig: true,
+      optimize: true,
+    }),
   ],
   markdown: {
     remarkPlugins: [
-      remarkToc,
+      remarkReadingTime,
+      [remarkToc, { heading: `${strings.blogPost.tableOfContents}` }],
       [
         remarkCollapse,
-        {
-          test: "Table of contents",
-        },
+        { test: `${strings.blogPost.tableOfContents}`, summary: `${strings.blogPost.openTableOfContents}` },
       ],
     ],
     shikiConfig: {

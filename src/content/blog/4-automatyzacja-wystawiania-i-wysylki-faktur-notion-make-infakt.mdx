@@ -1,0 +1,222 @@
+---
+title: Manage invoices with a single mouse click — Make + Notion + Infakt API
+author: Filip Chrapek
+pubDatetime: 2023-09-27
+featured: true
+ogImage: "/assets/images/auto-machine-orange.jpg"
+draft: false
+tags:
+  - productivity
+  - automation
+  - make
+  - notion
+  - infakt
+  - api
+description: Automate boring tasks with Make! Don't waste time on silly invoices. Delegate it to a robot, let it struggle.
+---
+
+import BlogPostImage from "../../components/BlogPostImage.astro";
+import Callout from "../../components/Callout.astro";
+
+import woohooRoss from "../../assets/gifs/woohoo-ross.gif";
+import makeScenario from "../../assets/images/4/make-scenario.png";
+import notionTasks from "../../assets/images/4/notion-tasks-structure.png";
+import makeNotionFilter from "../../assets/images/4/make-notion-filter.png";
+import makeHttpCreate from "../../assets/images/4/make-http-infakt-create.png";
+import makeHttpSend from "../../assets/images/4/make-http-infakt-send.png";
+import makeNotionUpdateDatabase from "../../assets/images/4/make-notion-update-database-item.png";
+
+And so the time has come... The bell has just struck for the thirtieth time. A small flock of crows, with an unbearable squawk, took to the air, heading towards the barely visible sunset beyond the horizon. The local residents hurriedly retreat to their homes, meticulously bolting doors and windows. An unpleasant smell of sweat hangs in the air...
+
+It has happened, the end of the month has arrived.
+
+It's time to don the heavy, ceremonial robe, throw on the massive hood, light 2 ceremonial candles, and begin the terrifying ritual of accounting.
+
+---
+
+Ah, bureaucracy, ah, invoices! Every freelancer's favorite topic, which makes your mouth and hands spontaneously form an ecstatic 'WOOHOO'! 🎉
+
+<BlogPostImage
+  src={woohooRoss}
+  alt="Ross is happy because he will be issuing invoices"
+  figcaption="You, when you know that tonight you have to issue 17 invoices and send them all, nicely to the clients."
+/>
+
+Actually, no. The end of the month sucks.
+
+---
+
+## Table of Contents
+
+## Problem
+
+Perhaps like me, month after month you manually issue the same or very similar invoices. Let's say, for clients with whom you have a longer cooperation. And perhaps, like me, you think to yourself _"There must be a better, smarter way to handle this"_. And even though this thought is quite real, it is immediately dominated by another thought: _"Well, okay, it's just a moment, inventing a solution will take me 5 times as long"_.
+
+And so it goes, month after month, ad infinitum.
+
+_No more!_ Because, all in white (or rather purple), <a href="https://www.make.com/" target="_blank">Make</a> appears.
+
+## Solution
+
+Make is a wonderful invention. I'm still discovering the full capabilities of this tool, but now I'm successfully using this platform for several regular activities, which I categorize as _don't wanna, but gotta_. One of such activities is undoubtedly issuing and sending invoices, and that's the bull we'll try to grab by the horns.
+
+<Callout>
+  In the example, I use <a href="https://www.notion.so/" target="_blank">Notion</a> as a data provider and <a href="https://www.infakt.pl/polecam/fchrapek-infakt" target="_blank">Infaktu</a>, which is responsible for handling invoices, but I will focus mainly on connecting everything in Make (not describing the operation of the mentioned platforms). In the article, there are/will be linked appropriate places, so if you want, you can check the details on a given topic.
+</Callout>
+
+---
+
+## Creating the Scenario
+
+The meat of Make are _Scenarios_, which are sequences of events following each other (and sometimes in parallel). You can read a bit more broadly about what scenarios are and how they work [here](/posts/make-perfect-tool-for-automation).
+
+<BlogPostImage
+  src={makeScenario}
+  alt="Sample scenario in Make.com"
+  figcaption="Sample scenario in Make.com"
+/>
+
+Let's get to work! 🙌
+
+### 1. Notion Module and Search Objects
+
+The trigger, or the event that initiates the whole sequence, will be an action performed in Notion. Specifically, it will simply be clicking a checkbox (or rather two).
+
+Let's go:
+
+1. I go to Make and select **_Scenarios_** and **_+ Create a new scenario_** from the left sidebar.
+2. I right-click on the still empty board, select **_Add module_**, and find Notion (the distinctive logo helps me with this).
+3. Then, within the Notion module, I find **_Search Objects_**. Within this module, I indicate which element is to _be found_.
+
+<Callout>
+**Data Source**
+
+How the view in Notion will finally look depends on you. It is important that there are fields (with data) that you want to transfer to Make. This is how it looks for me:
+
+<BlogPostImage
+  src={notionTasks}
+  alt="Structure of the to-do list in Notion"
+  figcaption="Structure of the to-do list in Notion"
+/>
+
+I have a specific task, and in it, information that I transfer to external platforms. _Task_, _Price_ (such a format is required by Infakt), and _Related Company_ (check the note below) will be needed to handle invoices in Infakt, while Make retrieves information from the _Run scripts_ and _Autogenerated invoice via Make_ fields (names can be arbitrary).
+</Callout>
+
+<Callout>
+**Important!**
+
+_Related Company_ is a _Relation_ type field and is needed to properly issue an invoice. It was a surprise to me that when preparing a scenario, this field only provides the _ID_ of the company to Make. However, the full name is needed and at the moment I do not know how I can extract it in Make by _ID_.
+
+The workaround I applied is to add an additional _Rollup_ field (it is hidden in Notion so as not to repeat the same thing twice), which, when connected to _Related Company_, provides the necessary information.
+
+If you know how to do it better, let me know 🤓
+</Callout>
+
+---
+
+#### Passing data from Notion to Make
+
+I go back to the **_Search Objects_** module and fill in:
+
+1. **_Connection_** - if you have not yet connected Make with Notion, it should be done now. If you don't want to play with sharing only specific places in Notion, choose **_Notion Public_**. I choose this type.
+2. **_Search Objects_** - I provide **_Database Items_**
+3. **_Database ID_** - ID of the Notion page where the data is located. I take it directly from the URL: _notion.so/id_
+
+<Callout>
+**Note!**
+
+Each new database/page in Notion added after authorization with Make must be connected separately, manually. I do this from the page in Notion, clicking the 3 dots in the upper right corner and selecting the option _Add Connections_ found at the very bottom.
+
+</Callout>
+
+4. **_Filter_** - the place that manages the entire scenario. Here the aforementioned checkboxes come into play.
+   When the task is completed, I check **_Run scripts_** which signals to Make that when the scenario is invoked, an invoice can be issued for this task.
+
+   The second, equally important checkbox is **_Autogenerated invoice via Make_**, which in turn prevents duplicates. At the start of the scenario, it is empty, and only at the end of the sequence is it automatically checked off. Because I want Make to take into account tasks with active **_Run scripts_** and inactive **_Autogenerated invoice via Make_**. So my condition looks like this:
+
+<BlogPostImage
+  src={makeNotionFilter}
+  alt="Filter in the Notion: Search Object module"
+  figcaption="Filter in the Notion: Search Object module"
+/>
+
+⌘+S (Ctrl+S) and I save the changes.
+
+---
+
+### 2. HTTP Module and use of Infakt API
+
+Even if the application/platform does not have direct integration with Make (as is the case with Notion), if only the place I want to connect provides an API interface, the entire digital world is open to me.
+
+Fortunately, Infakt is a decent company and has such an API. _To the computer!_
+
+#### Issuing an invoice
+
+Right-click and find the **_HTTP_** module.
+
+<Callout>
+  At this stage, you must have generated the Infakt API key. If you haven't done it yet, [here](/posts/how-to-generate-an-api-key-in-infakt) you can check how to do it in a few moments.
+</Callout>
+
+<Callout>
+  One more thing: if you are also creating an integration with Infakt (because the used example probably also plays with other platforms), it is worth having the <a href="https://docs.infakt.pl/" target="_blank_">API documentation</a> open. I won't focus on the requests themselves in any special way. Examples from the documentation should be sufficient.
+</Callout>
+
+In order:
+
+1. **_Credentials_** - I enter the generated API key along with a specific name (as of writing this post, it's **_X-API-Key_**)
+2. **_URL_** - selected **_endpoint_**. For issuing an invoice, it's ***https://api.infakt.pl/v3/invoices.json***
+3. **_Method_** - type of request, in this scenario, it's **_POST_**
+4. **_Headers_** - I leave it as it is
+5. **_Query String_** - I leave it as it is
+6. **_Body Type_** - I leave the default **_Raw_**
+7. **_Content Type_** - I select **_JSON_**
+8. **_Request Content_** - I copy the **_body_** of the request from the <a href="https://docs.infakt.pl/#6fe35880-014f-4890-bf18-bf373899ca2a" target="_blank_">Infakt documentation</a>. I replace the data that interests me with the information received from Notion (a window with all available data will appear where you paste the code). In my case, I'm interested in **_client_company_name_** where I provide the client's name from the **_Rollup_** field (I describe this in detail a bit above) as well as **_name_**, **_net_price_**, and **_unit\_\_net_price_** from the **_services_** array
+9. **_Parse response_** - **IMPORTANT!** Check **_Yes_**, because thanks to this I can bypass adding an additional **_JSON_** module in Make. In the next module, I will have immediate access to the necessary data.
+
+<BlogPostImage
+  src={makeHttpCreate}
+  alt="Structure of the HTTP module"
+  figcaption="Structure of the HTTP module"
+/>
+
+#### Sending the Invoice
+
+Sending the invoice is done very similarly, so the next module is also HTTP. I only change the **_endpoint_** (check <a href="https://docs.infakt.pl/#f410d26b-0c38-47fb-8224-7f500a5f3666" target="_blank_">documentation</a>) and **_body_**, which in this particular case I leave empty. This will retrieve the default client address set directly in Infakt.
+
+As you see in the documentation, **_endpoint_** requires dynamically passing the **_ID_** of the invoice issued a moment ago. Thanks to the previously selected **_Parse response_** in the settings of the previous module, I now have direct access to all information shared during the document creation. Just click in the right place and select **_ID_** from the available data list.
+
+Magic! ✨
+
+<BlogPostImage
+  src={makeHttpSend}
+  alt="Structure of the HTTP module"
+  figcaption="Structure of the HTTP module"
+/>
+
+### End of the Sequence and Notion Module: Update a Database Item
+
+After issuing and sending the invoice, I go back to the module related to Notion and send information about changing the status of the **_Autogenerated invoice via Make_** checkbox from **_false_** to **_true_**. Hence, the task is fully closed and is not considered during the next sequence invocation.
+
+Here I don’t use **_Search Object_** as it was the first time, but **_Update a Database Item_**. The module looks similar, though naturally, there are differences. Check below:
+
+<BlogPostImage
+  src={makeNotionUpdateDatabase}
+  alt="Structure of the Notion: Update Database Item module"
+  figcaption="Structure of the Notion: Update Database Item module"
+/>
+
+During the next sequence invocation, the completed task with the checked **_Autogenerated invoice via Make_** checkbox will not be considered.
+
+Below is the whole scenario:
+
+<BlogPostImage
+  src={makeScenario}
+  alt="Example scenario in Make.com"
+  figcaption="Example scenario in Make.com"
+/>
+
+## Good things mentioned in the article (referrals)
+- <a href="https://www.make.com/en/register?pc=filipchrapek" target="_blank">Create an account in Make</a>
+- <a href="https://affiliate.notion.so/b4jvkcj24dj6" target="_blank">Create an account in Notion</a>
+- <a href="https://www.infakt.pl/polecam/fchrapek-infakt" target="_blank">Create an account in Infakt</a>

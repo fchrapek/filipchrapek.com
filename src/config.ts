@@ -3,19 +3,20 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://filipchrapek.com/",
   author: "Filip Chrapek",
-  desc: "Everything what is currently interesting to me, which probably usually would be technology, design, freelancing and productivity",
-  title: "Filip Chrapek",
-  ogImage: "",
+  desc: "Filip Chrapek – web developer, designer, freelancer. I prefer slow, consistent and balanced approach, which I believe helps me doing this long term.",
+  title: "Filip Chrapek - slow freelance",
+  ogImage: "og-image.png",
   lightAndDarkMode: true,
-  postPerPage: 3,
+  postPerPage: 6,
 };
 
+export const LANG = "en";
 export const LOCALE = ["en-EN"]; // set to [] to use the environment default
 
 export const LOGO_IMAGE = {
   enable: true,
   svg: true,
-  // width: 216,
+  // width: 46,
   // height: 46,
 };
 

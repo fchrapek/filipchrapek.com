@@ -2,21 +2,24 @@
 import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
+import { strings, slugs } from "@content/content";
+
+import logoSVG from "/assets/logo.svg?raw";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
 }
 
-import logoSVG from "/assets/logo.svg?raw";
-
 const { activeNav } = Astro.props;
 ---
 
 <header>
-  <a id="skip-to-content" href="#main-content">Skip to content</a>
+  <a id="skip-to-content" href="#main-content">
+    {strings.global.skipToContent}
+  </a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo whitespace-nowrap">
+      <a href="/" title="logo" class="logo">
         {LOGO_IMAGE.enable ? <Fragment set:html={logoSVG} /> : SITE.title}
       </a>
       <nav id="nav-menu">
@@ -47,28 +50,29 @@ const { activeNav } = Astro.props;
         </button>
         <ul id="menu-items" class="display-none sm:flex">
           <li>
-            <a href="/posts" class={activeNav === "posts" ? "active" : ""}>
-              Posts
+            <a
+              href={`/${slugs.posts}`}
+              class={activeNav === "posts" ? "active" : ""}
+            >
+              {strings.global.posts}
             </a>
           </li>
           <li>
-            <a href="/tags" class={activeNav === "tags" ? "active" : ""}>
-              Tags
-            </a>
-          </li>
-          <li>
-            <a href="/about" class={activeNav === "about" ? "active" : ""}>
-              About
+            <a
+              href={`/${slugs.about}`}
+              class={activeNav === "about" ? "active" : ""}
+            >
+              {strings.global.about}
             </a>
           </li>
           <li>
             <LinkButton
-              href="/search"
+              href={`/${slugs.search}`}
               className={`focus-outline p-3 sm:p-1 ${
                 activeNav === "search" ? "active" : ""
               } flex`}
-              ariaLabel="search"
-              title="Search"
+              ariaLabel=`${slugs.search}`
+              title=`${strings.global.search}`
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +115,7 @@ const { activeNav } = Astro.props;
     @apply absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4;
   }
   .nav-container {
-    @apply mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row;
+    @apply mx-auto flex max-w-[42rem] flex-col items-center justify-between sm:flex-row;
   }
   .top-nav-wrap {
     @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
@@ -127,10 +131,10 @@ const { activeNav } = Astro.props;
   }
 
   nav {
-    @apply flex w-full flex-col items-center bg-skin-fill sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
+    @apply flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
   }
   nav ul {
-    @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
+    @apply mt-4 grid w-44 grid-cols-2  gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
   }
   nav ul li {
     @apply col-span-2 flex items-center justify-center;
@@ -138,11 +142,11 @@ const { activeNav } = Astro.props;
   nav ul li a {
     @apply w-full px-4 py-3 text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
   }
-  nav ul li:nth-child(4) a {
+  nav ul li:nth-last-child(2) a {
     @apply w-auto;
   }
-  nav ul li:nth-child(4),
-  nav ul li:nth-child(5) {
+  nav ul li:nth-last-child(1),
+  nav ul li:nth-last-child(2) {
     @apply col-span-1;
   }
   nav a.active {

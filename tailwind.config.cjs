@@ -15,6 +15,7 @@ module.exports = {
     // if one breakpoint is not enough for you
     screens: {
       sm: "640px",
+      smMax: {max: "639px"}
     },
 
     // Uncomment the following extend
@@ -24,6 +25,7 @@ module.exports = {
     textColor: {
       skin: {
         base: withOpacity("--color-text-base"),
+        secondary: withOpacity("--color-text-secondary"),
         accent: withOpacity("--color-accent"),
         inverted: withOpacity("--color-fill"),
       },
@@ -57,7 +59,7 @@ module.exports = {
       transparent: "transparent",
     },
     fontFamily: {
-      mono: ["IBM Plex Mono", "monospace"],
+      sans: ["DMSans", "sans-serif"],
     },
     // },
   },
