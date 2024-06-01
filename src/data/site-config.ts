@@ -51,14 +51,7 @@ const siteConfig: SiteConfig = {
       text: "Home",
       href: "/",
     },
-    {
-      text: "",
-      href: "",
-    },
-    {
-      text: "Blog",
-      href: "/blog",
-    },
+
     {
       text: "Tags",
       href: "/tags",
@@ -94,10 +87,10 @@ const siteConfig: SiteConfig = {
   ],
   hero: {
     title: "",
-    text: "",
+    text: "Hey there 👋 I'm Filip and I've seen The Office seasons 1-7 over 17 times, but the last two maybe just 3 or 4. <br /> I'm also into coding, designing, and picking up new skills 🚀",
     image: {
       src: "",
-      alt: "A person sitting at a desk in front of a computer",
+      alt: "",
     },
     actions: [
       {

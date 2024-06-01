@@ -12,7 +12,7 @@ seo:
     alt: Wavy lines
 ---
 
-![Wavy lines](/post-14.jpg)
+<!-- ![Wavy lines](/post-14.jpg) -->
 
 I've been a fan of Astro for a while now – very approachable with great documentation, perfectly optimized out of the box and the creators seem like a chill, wholesome dudes.
 

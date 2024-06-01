@@ -5,11 +5,17 @@ const { date } = Astro.props;
 ---
 
 <time datetime={date.toISOString()}>
-    {
-        date.toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        })
-    }
+  {
+    date.toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  }
 </time>
+
+<style>
+  time {
+  font-size: clamp(0.75rem, 0.4432rem + 1.3636vw, 1.125rem);
+  }
+</style>
