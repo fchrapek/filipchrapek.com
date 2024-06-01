@@ -87,7 +87,7 @@ const siteConfig: SiteConfig = {
   ],
   hero: {
     title: "",
-    text: "Hey there 👋 I'm Filip and I've seen The Office seasons 1-7 over 17 times, but the last two maybe just 3 or 4. <br /> I'm also into coding, designing, and picking up new skills 🚀",
+    text: "Hey there 👋 I'm Filip and I've seen The Office over 17 times. <br /> I'm also into coding, designing, and picking up new skills 🚀",
     image: {
       src: "",
       alt: "",
