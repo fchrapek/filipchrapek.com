@@ -36,10 +36,13 @@ And boy, oh boy, it really is ridiculously easy-to-use.
 
 To get the database to run you basically need to:
 
-1. run this astro command (I've switched to `pnpm` recently)
+Run this astro command (I've switched to `pnpm` recently)
 
-```
-pnpm astro add db
+`pnpm astro add db`
+
+```js
+const test = "testowanko";
+console.log(test);
 ```
 
 2. Adjust `db/config.ts` and `db/config.ts` (the db directory should be added when running the command, but somehow it wasn't the case for me – I've just added that manually)
