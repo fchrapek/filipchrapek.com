@@ -9,6 +9,21 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   markdown: {
     extendDefaultPlugins: true,
-    rehypePlugins: [[rehypePrettyCode, {}]],
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          defaultLang: {
+            block: "plaintext",
+            inline: "js",
+          },
+          // theme: {
+          //   dark: "github-dark",
+          //   light: "github-light",
+          // },
+        },
+      ],
+    ],
   },
 });

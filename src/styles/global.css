@@ -2,52 +2,74 @@
 @tailwind components;
 @tailwind utilities; */
 
-/* @layer base { */
-/* :root { */
-/* --color-text-main: 23 23 23; #171717 */
-/* --color-bg-main: 242 241 236; #F2F1EC */
-/* --color-bg-muted: 234 233 225; #EAE9E1 */
-/* --color-border-main: 23 23 23; #171717 */
-/* } */
-/* html.dark { */
-/* --color-text-main: 242 241 236; #F2F1EC */
-/* --color-bg-main: 23 23 23; #171717 */
-/* --color-bg-muted: 36 36 36; #242424 */
-/* --color-border-main: 242 241 236; #F2F1EC */
-/* } */
+:root {
+  --color-text: #1a1b26;
+  --color-bg: #f2f2f2;
 
-/* Cyan */
-/*
-    :root {
-        --color-text-main: 22 42 43;
-        --color-bg-main: 214 224 226;
-        --color-bg-muted: 204 216 219;
-        --color-border-main: 22 42 43;
-    }
-    html.dark {
-        --color-text-main: 214 224 226;
-        --color-bg-main: 22 42 43;
-        --color-bg-muted: 28 53 55;
-        --color-border-main: 214 224 226;
-    }
-    */
+  --transparency: 80%;
+  --color-bg-transparent: color-mix(
+    in srgb,
+    var(--color-bg) var(--transparency, 100%),
+    transparent
+  );
 
-/* Green */
-/*
-    :root {
-        --color-text-main: 58 66 56;
-        --color-bg-main: 243 239 230;
-        --color-bg-muted: 238 233 220;
-        --color-border-main: 58 66 56;
-    }
-    html.dark {
-        --color-text-main: 243 239 230;
-        --color-bg-main: 94 108 91;
-        --color-bg-muted: 89 103 86;
-        --color-border-main: 243 239 230;
-    }
-    */
-/* } */
+  --codeblock-title-padding: 0.5rem 0.75rem;
+  --codeblock-padding: 1rem;
+  --codeblock-border-radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #f2f2f2;
+    --color-bg: #1a1b26;
+    --color-bg-transparent: color-mix(
+      in srgb,
+      var(--color-bg) var(--transparency, 100%),
+      transparent
+    );
+  }
+}
+
+html {
+  color-scheme: light dark;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-text: #f2f2f2;
+  --color-bg: #1a1b26;
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --color-text: #1a1b26;
+  --color-bg: #f2f2f2;
+}
+
+/* FONTS */
+
+@font-face {
+  font-family: "Switzer-Variable";
+  src:
+    url("/fonts/Switzer-Variable.woff2") format("woff2"),
+    url("/fonts/Switzer-Variable.woff") format("woff"),
+    url("/fonts/Switzer-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Switzer-VariableItalic";
+  src:
+    url("/fonts/Switzer-VariableItalic.woff2") format("woff2"),
+    url("/fonts/Switzer-VariableItalic.woff") format("woff"),
+    url("/fonts/Switzer-VariableItalic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+
+/* BASIC RESET CSS */
 
 /*
   1. Use a more-intuitive box-sizing model.
@@ -83,6 +105,11 @@ svg {
   display: block;
   max-width: 100%;
 }
+
+figure {
+  overflow: auto;
+  margin: unset;
+}
 /*
   6. Remove built-in form typography styles
 */
@@ -112,30 +139,12 @@ h6 {
   isolation: isolate;
 }
 
-@font-face {
-  font-family: "Switzer-Variable";
-  src:
-    url("/fonts/Switzer-Variable.woff2") format("woff2"),
-    url("/fonts/Switzer-Variable.woff") format("woff"),
-    url("/fonts/Switzer-Variable.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Switzer-VariableItalic";
-  src:
-    url("/fonts/Switzer-VariableItalic.woff2") format("woff2"),
-    url("/fonts/Switzer-VariableItalic.woff") format("woff"),
-    url("/fonts/Switzer-VariableItalic.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: italic;
-}
+/* BASE */
 
 body {
   font-family: "Switzer-Variable", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 h1,
@@ -166,4 +175,61 @@ p {
 
 a {
   color: inherit;
+}
+
+code {
+  font-size: 1rem;
+  padding: 0.2em 0.4em;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  overflow: auto;
+}
+
+pre {
+  margin: unset;
+  border-radius: var(--codeblock-border-radius);
+
+  code {
+    gap: 0.5rem;
+    padding: var(--codeblock-padding);
+    counter-reset: line;
+  }
+}
+
+figure[data-rehype-pretty-code-figure]:has(> [data-rehype-pretty-code-title])
+  pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  border-top-left-radius: var(--codeblock-border-radius);
+  border-top-right-radius: var(--codeblock-border-radius);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: var(--codeblock-title-padding);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0;
+}
+
+figure[data-rehype-pretty-code-figure] {
+  code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1.5rem;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  code[data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 1.5rem;
+  }
+
+  code[data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 2rem;
+  }
 }
