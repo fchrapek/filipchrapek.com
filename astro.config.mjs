@@ -18,10 +18,10 @@ export default defineConfig({
             block: "plaintext",
             inline: "js",
           },
-          // theme: {
-          //   dark: "github-dark",
-          //   light: "github-light",
-          // },
+          theme: {
+            dark: "github-dark",
+            light: "github-light",
+          },
         },
       ],
     ],

@@ -36,7 +36,7 @@ The hype with Rehype (I know, genius) is understandable – with just a few lin
 
 2. Add the plugin to your `astro.config.mjs` file
 
-```js title="yoo" showLineNumbers
+```js title="yoo" showLineNumbers {10}
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
