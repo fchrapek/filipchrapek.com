@@ -52,10 +52,10 @@ const siteConfig: SiteConfig = {
       href: "/",
     },
 
-    {
-      text: "Tags",
-      href: "/tags",
-    },
+    // {
+    //   text: "Tags",
+    //   href: "/tags",
+    // },
   ],
   footerNavLinks: [
     {
