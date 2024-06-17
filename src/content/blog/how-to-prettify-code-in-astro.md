@@ -36,15 +36,15 @@ BUT, worry no more, cause today I'll show you how with just a couple of lines of
 
 The hype with Rehype (I know, genius) is understandable – with just a few lines of code you can present your code like Picasso (before that Abstraction nonsense).
 
-## Let's make your code look pretty in no time!
+### Let's make your code look pretty in no time!
 
-### 1. Install the plugin
+#### 1. Install the plugin
 
 `npm install rehype-pretty-code shiki` (the library is powered by `shiki` syntax highlighter)
 
 If you're interested how it works under the hood you can take a look at the [docs](https://rehype-pretty.pages.dev/).
 
-### 2. Adjust the `astro.config` file
+#### 2. Adjust the `astro.config` file
 
 ```js title="astro.config.mjs" {2, 6-7}
 import { defineConfig } from "astro/config";
@@ -62,7 +62,7 @@ At a minimum, you have to add the plugin (duh) and disable Astro's default synta
 
 Now, if you inspect your code blocks, you should see rehype syntax added.
 
-## 3. Sprinkle some CSS
+#### 3. Sprinkle some CSS
 
 By design, `rehype` doesn't come with any sort of styling, so you can freely activate your inner Rembrandt (I guess we're also learning about painting today).
 

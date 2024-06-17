@@ -161,6 +161,18 @@ h1 {
   font-size: clamp(1.5rem, 0.2727rem + 5.4545vw, 3rem);
 }
 
+h2 {
+  font-size: clamp(1.2rem, 0.2182rem + 4.3636vw, 2.4rem);
+}
+
+h3 {
+  font-size: clamp(1.05rem, 0.1909rem + 3.8181vw, 2.1rem);
+}
+
+h4 {
+  font-size: clamp(0.9rem, 0.1636rem + 3.2727vw, 1.8rem);
+}
+
 h1,
 h2 {
   line-height: 1.2;
@@ -172,7 +184,7 @@ hr {
 }
 
 p {
-  font-size: clamp(1rem, 0.8558rem + 0.641vw, 1.125rem);
+  font-size: clamp(0.9375rem, 0.7841rem + 0.6818vw, 1.125rem);
   line-height: 1.5;
 }
 
@@ -181,7 +193,7 @@ a {
 }
 
 code {
-  font-size: 1rem;
+  font-size: clamp(0.9375rem, 0.7841rem + 0.6818vw, 1.125rem);
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   overflow: auto;
