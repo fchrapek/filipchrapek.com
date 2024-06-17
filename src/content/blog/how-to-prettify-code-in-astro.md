@@ -20,8 +20,6 @@ Have you ever looked at a block of code and wanted to gouge your freaking eyes o
 
 _This is some random dude's comment on [this post](https://dev.to/weeb/what-s-one-of-the-ugliest-piece-of-code-you-ve-written-so-far-1ej3), hope he doesn't mind (no hard feelings)._
 
-Like, uhhh, go away you ugly monster! No one will ever love you and you'll die alone!
-
 No? Yeah, me neither.
 
 I've been using `rehype-pretty-code`, cause I'm not an idiot.
