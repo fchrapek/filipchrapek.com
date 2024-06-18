@@ -17,7 +17,7 @@ seo:
 
 Have you ever looked at a block of code and wanted to gouge your freaking eyes out?
 
-![Ugly ass code.](../../assets/blog/how-to-prettify-code-in-astro/ugly-ass-code.png)
+![Ugly ass code.](../../assets/blog/how-to-prettify-code-in-astro/ugly-code-omg.png)
 
 _This is some random dude's comment on [this post](https://dev.to/weeb/what-s-one-of-the-ugliest-piece-of-code-you-ve-written-so-far-1ej3), hope he doesn't mind (no hard feelings)._
 
