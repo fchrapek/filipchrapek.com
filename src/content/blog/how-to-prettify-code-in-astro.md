@@ -8,6 +8,7 @@ tags:
   - Astro
   - Presentation
   - Code
+  - Don't be an idiot
 seo:
   image:
     src: ""
