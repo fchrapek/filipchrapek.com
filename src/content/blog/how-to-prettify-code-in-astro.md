@@ -154,4 +154,6 @@ figure[data-rehype-pretty-code-figure] {
 
 Sooooo, if you didn't mess anything up (just kidding, I love you), your code should look something like this:
 
-![Most beautiful code I have ever seen](../../assets/blog/how-to-prettify-code-in-astro/most-beautiful-thing-i-have-ever-seen.png)
+(Fixing errors with images, sry)
+
+<!-- ![Most beautiful code I have ever seen](../../assets/blog/how-to-prettify-code-in-astro/most-beautiful-thing-i-have-ever-seen.png) -->
