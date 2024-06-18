@@ -13,7 +13,7 @@
   --color-bg-darker: color-mix(in srgb, var(--color-bg), #000 10%);
 
   --codeblock-title-padding: 0.5rem 0.75rem;
-  --codeblock-padding: 1rem;
+  --codeblock-padding: min(0.75rem, 2vw);
   --codeblock-border-radius: 0.5rem;
 }
 
@@ -148,6 +148,7 @@ body {
   font-family: "Switzer-Variable", sans-serif;
   color: var(--color-text);
   background-color: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 h1,
@@ -180,7 +181,7 @@ h2 {
 
 hr {
   margin-block: 2rem;
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: var(--color-bg);
 }
 
 p {
@@ -193,7 +194,6 @@ a {
 }
 
 code {
-  font-size: clamp(0.9375rem, 0.7841rem + 0.6818vw, 1.125rem);
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   overflow: auto;
@@ -222,8 +222,8 @@ figure[data-rehype-pretty-code-figure] {
     counter-increment: line;
     content: counter(line);
     display: inline-block;
-    width: 1rem;
-    margin-right: 1.5rem;
+    width: 1.2rem;
+    margin-right: min(4vw, 1.25rem);
     text-align: right;
     color: var(--color-text-lighter);
   }

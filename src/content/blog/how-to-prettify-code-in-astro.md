@@ -45,7 +45,7 @@ If you're interested how it works under the hood you can take a look at the [doc
 
 #### 2. Adjust the `astro.config` file
 
-```js title="astro.config.mjs" {2, 6-7}
+```js title="astro.config.mjs" {2, 6-7} showLineNumbers
 import { defineConfig } from "astro/config";
 import rehypePrettyCode from "rehype-pretty-code";
 
@@ -113,15 +113,6 @@ figure[data-rehype-pretty-code-figure] {
     margin-right: 1.5rem;
     text-align: right;
     color: rgba(255, 255, 255, 0.4);
-  }
-
-  /* Adjust width based on line number digits */
-  [data-line-numbers-max-digits="2"] > [data-line]::before {
-    width: 1.5rem;
-  }
-
-  [data-line-numbers-max-digits="3"] > [data-line]::before {
-    width: 2rem;
   }
 
   [data-highlighted-line] {
