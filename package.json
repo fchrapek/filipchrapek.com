@@ -17,6 +17,7 @@
     "marked": "^12.0.0",
     "pnpm": "^9.3.0",
     "rehype-pretty-code": "^0.13.2",
+    "sharp": "^0.33.4",
     "shiki": "^1.6.5"
   },
   "devDependencies": {
