@@ -1,24 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/Button.astro';
-import Hero from '../components/Hero.astro';
-import PostPreview from '../components/PostPreview.astro';
-import ProjectPreview from '../components/ProjectPreview.astro';
-import siteConfig from '../data/site-config';
-import { sortItemsByDateDesc } from '../utils/data-utils';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import Hero from "../components/Hero.astro";
+import PostPreview from "../components/PostPreview.astro";
+import ProjectPreview from "../components/ProjectPreview.astro";
+import siteConfig from "../data/site-config";
+import { sortItemsByDateDesc } from "../utils/data-utils";
 
-const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
+const posts = (await getCollection("blog")).sort(sortItemsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);
 
-const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
+const projects = (await getCollection("projects")).sort(sortItemsByDateDesc);
 const featuredProjects = projects.filter(({ data }) => data.isFeatured);
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
-    <Hero />
-    <hr>
-    <!-- {
+  <Hero />
+  <hr />
+  <!-- {
         featuredProjects?.length > 0 && (
             <div class="mb-16 sm:mb-24">
                 <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Projects</h2>
@@ -31,17 +31,17 @@ const featuredProjects = projects.filter(({ data }) => data.isFeatured);
             </div>
         )
     } -->
-    {
-        featuredPosts?.length > 0 && (
-            <div class="">
-                {/* <h2 class="">Recent posts</h2> */}
-                {featuredPosts.map((post) => (
-                    <PostPreview post={post} class="" headingLevel="h3" />
-                ))}
-                {/* <div class="">
+  {
+    featuredPosts?.length > 0 && (
+      <div class="">
+        {/* <h2 class="">Recent posts</h2> */}
+        {featuredPosts.map((post) => (
+          <PostPreview post={post} class="" headingLevel="h4" />
+        ))}
+        {/* <div class="">
                     <Button href="/blog">View All Posts</Button>
                 </div> */}
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 </BaseLayout>

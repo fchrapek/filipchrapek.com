@@ -33,7 +33,7 @@ BUT, worry no more, cause today I'll show you how with just a couple of lines of
 
 The hype with Rehype (I know, genius) is understandable – with just a few lines of code you can present your code like Picasso (before that Abstraction nonsense).
 
-### Let's make your code look pretty in no time!
+**Let's make your code look pretty in no time!**
 
 #### 1. Install the plugin
 
@@ -87,9 +87,7 @@ pre {
 
 Now, copy and paste the below `rehype` specific CSS and you should be good to go:
 
-**Code block styling:**
-
-```css
+```css title="Code block styling"
 figure[data-rehype-pretty-code-figure] {
   pre {
     background-color: #1a1b26;
@@ -120,9 +118,7 @@ figure[data-rehype-pretty-code-figure] {
 }
 ```
 
-**Code block with title styling:**
-
-```css
+```css title="Code block with title styling"
 [data-rehype-pretty-code-figure]:has(> [data-rehype-pretty-code-title]) pre {
   border-top-left-radius: 0;
   border-top-right-radius: 0;

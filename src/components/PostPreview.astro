@@ -15,22 +15,22 @@ const TitleTag = headingLevel;
 ---
 
 <a class:list={["postPreview", className]} href={`/blog/${post.slug}/`}>
-    <FormattedDate date={publishDate} />
-    {
-      updatedDate && (
-        <>
-          {" "}
-          <span>
-            (Updated on <FormattedDate date={updatedDate} />)
-          </span>
-        </>
-      )
-    }
+  <FormattedDate date={publishDate} />
+  {
+    updatedDate && (
+      <>
+        {" "}
+        <span>
+          (Updated on <FormattedDate date={updatedDate} />)
+        </span>
+      </>
+    )
+  }
   <TitleTag class="postTitle">
     {title}
   </TitleTag>
 
-  {excerpt && <div class="postExcerpt">{excerpt}</div>}
+  {excerpt && <p class="postExcerpt">{excerpt}</p>}
   <!-- <div class="">
     Read Post <ArrowRight class="" />
   </div> -->
@@ -43,18 +43,16 @@ const TitleTag = headingLevel;
     color: inherit;
   }
 
-.postTitle {
-  margin-top: .4rem;
-}
+  .postTitle {
+    margin-top: 0.4rem;
+  }
 
-.postExcerpt {
-font-size: clamp(0.9375rem, 0.7841rem + 0.6818vw, 1.125rem);
-}
 
-.readPost {
-  margin-top: 1.5rem;  text-decoration: underline;
-  font-weight: 500;
-text-decoration: none;
-}
 
+  .readPost {
+    margin-top: 1.5rem;
+    text-decoration: underline;
+    font-weight: 500;
+    text-decoration: none;
+  }
 </style>

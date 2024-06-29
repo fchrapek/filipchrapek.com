@@ -67,9 +67,9 @@ ul,
 ol,
 blockquote {
   font-size: clamp(0.9375rem, 0.7841rem + 0.6818vw, 1.125rem);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
-a {
-  color: inherit;
+strong {
+  font-weight: 700;
 }
