@@ -1,0 +1,47 @@
+body {
+  font-family: "Switzer-Variable", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+:where(
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    p,
+    .paragraph,
+    ul,
+    ol,
+    pre,
+    table,
+    figure,
+    blockquote,
+    form,
+    fieldset,
+    dl,
+    address,
+    details,
+    hr,
+    aside,
+    video
+  ) {
+  + * {
+    margin-block-start: 1rem;
+  }
+}
+
+hr {
+  margin-block: 2rem;
+  border-color: var(--color-text);
+  opacity: 0.2;
+}

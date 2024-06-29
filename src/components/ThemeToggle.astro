@@ -17,6 +17,10 @@
     border-radius: 0.2rem;
     opacity: 0.5;
     transition: opacity 0.3s;
+    width: 2rem;
+    height: 2rem;
+    display: inline-grid;
+    place-content: center;
   }
 
   button:hover,
@@ -33,7 +37,6 @@
       return;
     }
     const themeButtons = themeSwitcher.querySelectorAll("button");
-
 
     if (themeButtons.length === 0) {
       return;

@@ -29,8 +29,6 @@ If you're still presenting your code like an ape with just the basic styling, th
 
 BUT, worry no more, cause today I'll show you how with just a couple of lines of code you can stop being one (an idiot, I mean).
 
----
-
 ## Introducing Rehype
 
 The hype with Rehype (I know, genius) is understandable – with just a few lines of code you can present your code like Picasso (before that Abstraction nonsense).

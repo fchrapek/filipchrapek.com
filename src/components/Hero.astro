@@ -28,7 +28,7 @@ const hero = siteConfig.hero;
         </figure>
       )}
       {/* {hero.text && <h1 class="heroText" set:html={marked.parse(hero.text)} />} */}
-        {hero.text && <h1 class="heroText" set:html={hero.text} />}
+      {hero.text && <h1 class="heroText" set:html={hero.text} />}
       {/* {hero.actions && hero.actions.length > 0 && (
         <div class="">
           {hero.actions.map((action) => (
@@ -41,8 +41,7 @@ const hero = siteConfig.hero;
 }
 
 <style>
-.heroText {
-font-size: clamp(1.5rem, 0.2727rem + 5.4545vw, 3rem);
-  font-weight: 500;
-}
+  .heroText {
+    font-size: clamp(1.5rem, 0.2727rem + 5.4545vw, 2.8rem);
+  }
 </style>

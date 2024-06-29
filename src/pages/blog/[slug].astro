@@ -1,27 +1,31 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Button from '../../components/Button.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import PostPreview from '../../components/PostPreview.astro';
-import Subscribe from '../../components/Subscribe.astro';
-import { sortItemsByDateDesc } from '../../utils/data-utils';
-import { slugify } from '../../utils/common-utils';
+import { type CollectionEntry, getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import PostPreview from "../../components/PostPreview.astro";
+import Subscribe from "../../components/Subscribe.astro";
+import { sortItemsByDateDesc } from "../../utils/data-utils";
+import { slugify } from "../../utils/common-utils";
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
-    const postCount = posts.length;
-    return posts.map((post, index) => ({
-        params: { slug: post.slug },
-        props: {
-            post,
-            prevPost: index + 1 !== postCount ? posts[index + 1] : null,
-            nextPost: index !== 0 ? posts[index - 1] : null
-        }
-    }));
+  const posts = (await getCollection("blog")).sort(sortItemsByDateDesc);
+  const postCount = posts.length;
+  return posts.map((post, index) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+      prevPost: index + 1 !== postCount ? posts[index + 1] : null,
+      nextPost: index !== 0 ? posts[index - 1] : null,
+    },
+  }));
 }
 
-type Props = { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
+type Props = {
+  post: CollectionEntry<"blog">;
+  prevPost: CollectionEntry<"blog">;
+  nextPost: CollectionEntry<"blog">;
+};
 
 const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props;
@@ -29,29 +33,35 @@ const { title, publishDate, updatedDate, excerpt, tags = [], seo } = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image} pageType="article" showHeader={false}>
-    <article class="post">
-        <header class="">
-            <h1 class="postTitle">{title}</h1>
-            <div class="">
-                <FormattedDate date={publishDate} />
-                {
-                    updatedDate && (
-                        <>
-                            {' '}
-                            <span>
-                                (Updated on <FormattedDate date={updatedDate} />)
-                            </span>
-                        </>
-                    )
-                }
-            </div>
-        </header>
-        <hr>
-        <div class="">
-            <Content />
-        </div>
-        <!-- <div class="">
+<BaseLayout
+  title={seo?.title ?? title}
+  description={seo?.description ?? excerpt}
+  image={seo?.image}
+  pageType="article"
+  showHeader={false}
+>
+  <article class="post">
+    <header class="">
+      <h1 class="postTitle">{title}</h1>
+      <div class="postDate">
+        <FormattedDate date={publishDate} />
+        {
+          updatedDate && (
+            <>
+              {" "}
+              <span>
+                (Updated on <FormattedDate date={updatedDate} />)
+              </span>
+            </>
+          )
+        }
+      </div>
+    </header>
+    <hr />
+    <div class="">
+      <Content />
+    </div>
+    <!-- <div class="">
             {
                 tags.length > 0 && (
                     <div class="">
@@ -65,45 +75,46 @@ const { Content } = await post.render();
             }
             <Button class="copy-url-button" aria-label="Copy link" data-url={href} data-tooltip-default="Copy link" data-tooltip-success="Copied">Share</Button>
         </div> -->
-    </article>
-    {
-        (prevPost || nextPost) && (
-            <div class="">
-                <h2 class="">Read Next</h2>
-                {nextPost && <PostPreview post={nextPost} class="" headingLevel="h3" />}
-                {prevPost && <PostPreview post={prevPost} class="" headingLevel="h3" />}
-            </div>
-        )
-    }
-    <!-- <Subscribe class="my-16 sm:my-24" /> -->
+  </article>
+  {
+    (prevPost || nextPost) && (
+      <div class="">
+        <h2 class="">Read Next</h2>
+        {nextPost && <PostPreview post={nextPost} class="" headingLevel="h3" />}
+        {prevPost && <PostPreview post={prevPost} class="" headingLevel="h3" />}
+      </div>
+    )
+  }
+  <!-- <Subscribe class="my-16 sm:my-24" /> -->
 </BaseLayout>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
-        const copyUrlButton = document.querySelector('.copy-url-button') as HTMLButtonElement;
-        copyUrlButton?.addEventListener('click', async () => {
-            await copyUrl(copyUrlButton);
-        });
-
-        async function copyUrl(button: HTMLButtonElement) {
-            let url = button.getAttribute('data-url') || '';
-            let label = button.innerText;
-
-            await navigator.clipboard.writeText(url);
-
-            button.innerText = 'Copied';
-
-            setTimeout(() => {
-                button.innerText = label;
-            }, 2500);
-        }
+  document.addEventListener("astro:page-load", () => {
+    const copyUrlButton = document.querySelector(
+      ".copy-url-button"
+    ) as HTMLButtonElement;
+    copyUrlButton?.addEventListener("click", async () => {
+      await copyUrl(copyUrlButton);
     });
+
+    async function copyUrl(button: HTMLButtonElement) {
+      let url = button.getAttribute("data-url") || "";
+      let label = button.innerText;
+
+      await navigator.clipboard.writeText(url);
+
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = label;
+      }, 2500);
+    }
+  });
 </script>
 
 <style>
   .postTitle {
-    margin-bottom: .5rem;
-    font-size: clamp(1.5rem, 0rem + 6.6667vw, 2.5rem);
+    margin: 0 0 0.2rem;
   }
 
 </style>
