@@ -15,11 +15,20 @@ seo:
     alt: ""
 ---
 
+import ImagePost from "../../components/ImagePost.astro";
+import uglyCodeMobile from "../../assets/blog/how-to-prettify-code-in-astro/ugly-ass-code.jpeg";
+import uglyCodeDesktop from "../../assets/blog/how-to-prettify-code-in-astro/ugly-ass-code.jpeg";
+import beautifulCodeMobile from "../../assets/blog/how-to-prettify-code-in-astro/most-beautiful-thing-i-have-ever-seen.png";
+import beautifulCodeDesktop from "../../assets/blog/how-to-prettify-code-in-astro/most-beautiful-thing-i-have-ever-seen.png";
+
 Have you ever looked at a block of code and wanted to gouge your freaking eyes out?
 
-![Ugly ass code.](/test.jpg)
-
-_This is some random dude's comment on [this post](https://dev.to/weeb/what-s-one-of-the-ugliest-piece-of-code-you-ve-written-so-far-1ej3), hope he doesn't mind (no hard feelings)._
+<ImagePost
+  mobileImgUrl={uglyCodeMobile}
+  desktopImgUrl={uglyCodeDesktop}
+  alt="Ugly ass code"
+  figcaption="This is some random dude's comment on dev.to, hope he doesn't mind..."
+/>
 
 No? Yeah, me neither.
 
@@ -139,4 +148,8 @@ figure[data-rehype-pretty-code-figure] {
 
 Sooooo, if you didn't mess anything up (just kidding, I love you), your code should look something like this:
 
-(Fixing errors with images, sry)
+<ImagePost
+  mobileImgUrl={beautifulCodeMobile}
+  desktopImgUrl={beautifulCodeDesktop}
+  alt="Beautiful snippet of code"
+/>

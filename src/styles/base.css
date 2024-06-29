@@ -23,21 +23,25 @@ body {
     ul,
     ol,
     pre,
-    table,
-    figure,
-    blockquote,
-    form,
-    fieldset,
     dl,
     address,
     details,
     hr,
     aside,
-    video
+
   ) {
   + * {
     margin-block-start: 1rem;
   }
+}
+
+table,
+figure,
+blockquote,
+form,
+fieldset,
+video {
+  margin-block: min(2rem, 5vw);
 }
 
 hr {
