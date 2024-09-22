@@ -3,7 +3,7 @@
   --color-base-dark: #1a1b26;
 
   --color-headings: var(--color-base-dark);
-  --color-text: var(--color-base-80);
+  --color-text: var(--color-base-70);
   --color-bg: var(--color-base-light);
 
   --color-base-10: color-mix(in srgb, var(--color-base-light), #000 10%);
@@ -24,7 +24,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-headings: var(--color-base-light);
-    --color-text: var(--color-base-80);
+    --color-text: var(--color-base-70);
     --color-bg: var(--color-base-dark);
 
     --color-base-10: color-mix(in srgb, var(--color-base-dark), #fff 10%);
@@ -46,7 +46,7 @@ html {
 [data-theme="dark"] {
   color-scheme: dark;
   --color-headings: var(--color-base-light);
-  --color-text: var(--color-base-80);
+  --color-text: var(--color-base-70);
   --color-bg: var(--color-base-dark);
 
   --color-base-10: color-mix(in srgb, var(--color-base-dark), #fff 10%);
@@ -63,7 +63,7 @@ html {
 [data-theme="light"] {
   color-scheme: light;
   --color-headings: var(--color-base-dark);
-  --color-text: var(--color-base-80);
+  --color-text: var(--color-base-70);
   --color-bg: var(--color-base-light);
 
   --color-base-10: color-mix(in srgb, var(--color-base-light), #000 10%);

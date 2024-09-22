@@ -33,10 +33,13 @@ const featuredProjects = projects.filter(({ data }) => data.isFeatured);
     } -->
   {
     featuredPosts?.length > 0 && (
-      <div class="">
+      <div class="featuredPosts">
         {/* <h2 class="">Recent posts</h2> */}
         {featuredPosts.map((post) => (
-          <PostPreview post={post} class="" headingLevel="h4" />
+          <div>
+            <PostPreview post={post} class="" headingLevel="h4" />
+            <hr />
+          </div>
         ))}
         {/* <div class="">
                     <Button href="/blog">View All Posts</Button>
@@ -45,3 +48,5 @@ const featuredProjects = projects.filter(({ data }) => data.isFeatured);
     )
   }
 </BaseLayout>
+
+

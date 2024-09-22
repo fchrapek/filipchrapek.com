@@ -15,8 +15,8 @@ export default defineConfig({
         rehypePrettyCode,
         {
           defaultLang: {
-            block: "plaintext",
-            inline: "js",
+            block: "js",
+            inline: "plaintext",
           },
           theme: {
             dark: "github-dark",

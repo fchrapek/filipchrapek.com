@@ -10,8 +10,7 @@
 <style>
   button {
     cursor: pointer;
-    background-color: var(--color-text);
-    color: var(--color-bg);
+    background-color: var(--color-base-90);
     border: none;
     appearance: none;
     border-radius: 0.2rem;
@@ -29,7 +28,7 @@
   }
 </style>
 
-<script>
+<script is:inline>
   document.addEventListener("astro:page-load", () => {
     const themeSwitcher = document.querySelector("[data-theme-picker]");
 

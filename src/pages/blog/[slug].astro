@@ -61,27 +61,29 @@ const { Content } = await post.render();
     <div class="">
       <Content />
     </div>
-    <!-- <div class="">
-            {
-                tags.length > 0 && (
-                    <div class="">
-                        {tags.map((tag) => (
-                            <a class="" href={`/tags/${slugify(tag)}`}>
-                                #{tag}
-                            </a>
-                        ))}
-                    </div>
-                )
-            }
-            <Button class="copy-url-button" aria-label="Copy link" data-url={href} data-tooltip-default="Copy link" data-tooltip-success="Copied">Share</Button>
-        </div> -->
+    <hr />
+    {
+      tags.length > 0 && (
+        <ul class="tags">
+          {tags.map((tag) => (
+            <li class="tag">
+              <a class="tagLink" href={`/tags/${slugify(tag)}`}>
+                #{tag}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <!-- <Button class="copy-url-button" aria-label="Copy link" data-url={href} data-tooltip-default="Copy link" data-tooltip-success="Copied">Share</Button> -->
   </article>
+  <hr />
   {
     (prevPost || nextPost) && (
       <div class="">
-        <h2 class="">Read Next</h2>
-        {nextPost && <PostPreview post={nextPost} class="" headingLevel="h3" />}
-        {prevPost && <PostPreview post={prevPost} class="" headingLevel="h3" />}
+        <h3 class="readNextHeading">Read Next ➡️</h3>
+        {nextPost && <PostPreview post={nextPost} class="" headingLevel="h4" />}
+        {prevPost && <PostPreview post={prevPost} class="" headingLevel="h4" />}
       </div>
     )
   }
@@ -117,4 +119,7 @@ const { Content } = await post.render();
     margin: 0 0 0.2rem;
   }
 
+  .readNextHeading {
+    margin-block-end: 1rem;
+  }
 </style>

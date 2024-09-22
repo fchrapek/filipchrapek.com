@@ -34,25 +34,50 @@ const TitleTag = headingLevel;
   <!-- <div class="">
     Read Post <ArrowRight class="" />
   </div> -->
-  <div class="readPost">Read Post ➡️</div>
+  <div class="readPost">
+    Read Post <span class="hoverHide">👀</span><span class="hoverShow">➡️</span>
+  </div>
 </a>
 
 <style>
   .postPreview {
     text-decoration: none;
     color: inherit;
+
+    &:hover {
+      .hoverHide {
+        display: none;
+        opacity: 0;
+      }
+
+      .hoverShow {
+        display: inline;
+        opacity: 1;
+      }
+    }
   }
 
   .postTitle {
     margin-top: 0.4rem;
   }
 
-
-
   .readPost {
     margin-top: 1.5rem;
+    color: var(--color-base-90);
     text-decoration: underline;
     font-weight: 500;
-    text-decoration: none;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+  }
+
+  .hoverHide,
+  .hoverShow {
+    transition: display 0.25s , opacity 0.25s;
+    /* transition-behavior: allow-discrete; */
+  }
+
+  .hoverShow {
+    display: none;
+    opacity: 0;
   }
 </style>
