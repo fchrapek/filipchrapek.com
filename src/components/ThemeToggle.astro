@@ -28,62 +28,42 @@
   }
 </style>
 
-<script is:inline>
+<script>
   document.addEventListener("astro:page-load", () => {
     const themeSwitcher = document.querySelector("[data-theme-picker]");
+    if (!themeSwitcher) return;
 
-    if (!themeSwitcher) {
-      return;
-    }
     const themeButtons = themeSwitcher.querySelectorAll("button");
+    if (themeButtons.length === 0) return;
 
-    if (themeButtons.length === 0) {
-      return;
+    function getThemePreference() {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    // Get the theme from localStorage or match media preference
-    const theme = (() => {
-      if (localStorage.getItem("theme")) {
-        return localStorage.getItem("theme");
-      }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
-      return "light";
-    })();
-
-    // Apply the theme to the document
-    if (theme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
-    } else if (theme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      updateButtonStates(theme);
     }
 
-    // Update button class based on the theme
-    themeButtons.forEach((button) => {
-      if (button.getAttribute("aria-label") === theme) {
-        button.classList.add("active");
-      }
-    });
+    function updateButtonStates(theme) {
+      themeButtons.forEach((button) => {
+        button.classList.toggle("active", button.getAttribute("aria-label") === theme);
+      });
+    }
+
+    // Set initial button states
+    const currentTheme = getThemePreference();
+    updateButtonStates(currentTheme);
 
     // Add click event listener to each button to change theme
     themeButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        themeButtons.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-
-        if (button.getAttribute("aria-label") === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-          localStorage.setItem("theme", "light");
-        } else if (button.getAttribute("aria-label") === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark");
-        } else {
-          document.documentElement.removeAttribute("data-theme");
-          localStorage.removeItem("theme");
-        }
+        const newTheme = button.getAttribute("aria-label");
+        setTheme(newTheme);
       });
     });
   });
