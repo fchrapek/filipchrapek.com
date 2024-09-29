@@ -55,9 +55,9 @@
       });
     }
 
-    // Set initial button states
+    // Set initial theme and button states
     const currentTheme = getThemePreference();
-    updateButtonStates(currentTheme);
+    setTheme(currentTheme);
 
     // Add click event listener to each button to change theme
     themeButtons.forEach((button) => {
